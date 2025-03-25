@@ -163,12 +163,6 @@ void printBraille(String Braille, bool isCapital, bool isNumber) {
     delay(200);
   }
 
-  // for (int i = 0; i < 6; i++) {
-  //   if (Braille[i] == '1') {
-  //     Servos[i].write(0);
-  //     toClear = true;
-  //   }
-  // }
   if(Braille[0] == '1' && Braile != "111111") {
     Servos[0].write(45);
     toClear = true;
