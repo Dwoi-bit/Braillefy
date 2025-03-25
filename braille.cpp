@@ -1,24 +1,6 @@
 #include <ESP32Servo.h>
 #include <Stepper.h>
 
-// Servo myServo1; 
-// Servo myServo2; 
-// Servo myServo3; 
-// Servo myServo4; 
-// Servo myServo5; 
-// Servo myServo6; 
-// int servoPin1 = 15;  // Change this to your GPIO pin
-// int servoPin2 = 13;
-// int servoPin3 = 19;
-// int servoPin4 = 16;
-// int servoPin5 = 21;
-// int servoPin6 = 14;
-//    myServo1.attach(servoPin1, 500, 2500);
-//  myServo2.attach(servoPin2, 500, 2500);
-//  myServo3.attach(servoPin3, 500, 2500);
-//  myServo4.attach(servoPin4, 500, 2500);
-//  myServo5.attach(servoPin5, 500, 2500);
-//    myServo6.attach(servoPin6, 500, 2500);
 void rollPaper();
 void clearServos();
 void printBraille(String Braille, bool isCapital, bool isNumber);
@@ -29,9 +11,6 @@ const int IN1 = 27;
 const int IN2 = 26;
 const int IN3 = 25;
 const int IN4 = 33;
-// const int IN1 = 27; 
-// const int IN2 = 26;
-// const int ENA = 14; 
 
 // Servo pins (modify based on actual wiring)
 const int ServoPins[6] = {15, 13, 19, 16, 21, 14};
@@ -77,6 +56,7 @@ void loop() {
         isCapital = false;
       };
       isNumber = isDigit(inputChar);
+      Serial.println(isNumber);
       switch (inputChar) {
         case 'a': braille = "100000"; break;
         case 'b': braille = "101000"; break;
@@ -114,6 +94,7 @@ void loop() {
         case '7': braille = "111100"; break;
         case '8': braille = "101100"; break;
         case '9': braille = "011000"; break;
+        case ' ': braille = "111111"; break;
         default: braille = "000000"; break;
       };
       Serial.print("braille printing now is ");
@@ -146,9 +127,6 @@ void clearServos() {
    Servos[4].write(90);
    Servos[5].write(20);
    delay(200);
-  // for (int i = 0; i < 6; i++) {
-  //   Servos[i].write(90); // Reset servos, change to what is corrrect
-  // }
 }
 
 void printBraille(String Braille, bool isCapital, bool isNumber) {
@@ -156,28 +134,33 @@ void printBraille(String Braille, bool isCapital, bool isNumber) {
 
   if (isCapital) {
     Servos[5].write(20); // push in 
-    delay(500);
+    delay(100);
     Servos[5].write(90); // push out
-    delay(500);
+    delay(100);
+    clearServos();
+    delay(100);
     rollPaper();
-    delay(500);
+    delay(200);
   }
 
   if (isNumber) {
+    Serial.println("I am here");
     Servos[1].write(45);
     Servos[3].write(30);
-    delay(500);
+    delay(100);
     Servos[4].write(90);
     Servos[5].write(20);
-    delay(500);
+    delay(100);
     Servos[1].write(90);
     Servos[3].write(90);
-    delay(500);
+    delay(100);
     Servos[4].write(30);
     Servos[5].write(90);
-    delay(500);
+    delay(100);
+    clearServos();
+    delay(200);
     rollPaper();
-    delay(500);
+    delay(200);
   }
 
   // for (int i = 0; i < 6; i++) {
@@ -186,37 +169,37 @@ void printBraille(String Braille, bool isCapital, bool isNumber) {
   //     toClear = true;
   //   }
   // }
-  if(Braille[0] == '1') {
+  if(Braille[0] == '1' && Braile != "111111") {
     Servos[0].write(45);
     toClear = true;
     delay(200);
   };
 
-  if(Braille[1] == '1') {
+  if(Braille[1] == '1' && Braile != "111111") {
     Servos[1].write(90);
     toClear = true;
     delay(200);
   };
   
-  if(Braille[2] == '1') {
+  if(Braille[2] == '1' && Braile != "111111") {
     Servos[2].write(30);
     toClear = true;
     delay(200);
   };
   
-  if(Braille[3] == '1') {
+  if(Braille[3] == '1' && Braile != "111111") {
     Servos[3].write(90);
     toClear = true;
     delay(200);
   };
 
-  if(Braille[4] == '1') {
+  if(Braille[4] == '1' && Braile != "111111") {
     Servos[4].write(20);
     toClear = true;
     delay(200);
   };
   
-  if(Braille[5] == '1') {
+  if(Braille[5] == '1' && Braile != "111111") {
     Servos[5].write(90);
     toClear = true;
   };
@@ -228,7 +211,4 @@ void printBraille(String Braille, bool isCapital, bool isNumber) {
   if(Braille != "000000") {
     rollPaper();
   };
-  //delay(500);
 }
-
-
