@@ -144,13 +144,14 @@ void printBraille(String Braille, bool isCapital, bool isNumber) {
   }
 
   if (isNumber) {
-    Serial.println("I am here");
     Servos[1].write(45);
+    delay(500);
     Servos[3].write(30);
-    delay(100);
+    delay(500);
     Servos[4].write(90);
+    delay(500);
     Servos[5].write(20);
-    delay(100);
+    delay(500);
     Servos[1].write(90);
     Servos[3].write(90);
     delay(100);
@@ -163,37 +164,37 @@ void printBraille(String Braille, bool isCapital, bool isNumber) {
     delay(200);
   }
 
-  if(Braille[0] == '1' && Braile != "111111") {
+  if(Braille[0] == '1' && Braille != "111111") {
     Servos[0].write(45);
     toClear = true;
-    delay(200);
+    delay(500);
   };
 
-  if(Braille[1] == '1' && Braile != "111111") {
+  if(Braille[1] == '1' && Braille != "111111") {
     Servos[1].write(90);
     toClear = true;
-    delay(200);
+    delay(500);
   };
   
-  if(Braille[2] == '1' && Braile != "111111") {
+  if(Braille[2] == '1' && Braille != "111111") {
     Servos[2].write(30);
     toClear = true;
-    delay(200);
+    delay(500);
   };
   
-  if(Braille[3] == '1' && Braile != "111111") {
+  if(Braille[3] == '1' && Braille != "111111") {
     Servos[3].write(90);
     toClear = true;
-    delay(200);
+    delay(500);
   };
 
-  if(Braille[4] == '1' && Braile != "111111") {
+  if(Braille[4] == '1' && Braille != "111111") {
     Servos[4].write(20);
     toClear = true;
-    delay(200);
+    delay(500);
   };
   
-  if(Braille[5] == '1' && Braile != "111111") {
+  if(Braille[5] == '1' && Braille != "111111") {
     Servos[5].write(90);
     toClear = true;
   };
@@ -206,3 +207,6 @@ void printBraille(String Braille, bool isCapital, bool isNumber) {
     rollPaper();
   };
 }
+
+
+
