@@ -19,7 +19,7 @@
 //  myServo4.attach(servoPin4, 500, 2500);
 //  myServo5.attach(servoPin5, 500, 2500);
 //    myServo6.attach(servoPin6, 500, 2500);
-//void rollPaper();
+void rollPaper();
 void clearServos();
 void printBraille(String Braille, bool isCapital, bool isNumber);
 
