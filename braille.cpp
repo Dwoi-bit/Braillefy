@@ -14,7 +14,7 @@ const int IN4 = 33;
 
 // Servo pins (modify based on actual wiring)
 const int ServoPins[6] = {15, 13, 19, 16, 21, 14};
-
+// const int ServoPins[6] = {13, 15, 16, 19, 24, 21};
 
 
 void setup() {
@@ -105,15 +105,14 @@ void loop() {
   };
 }
 void rollPaper() {
-  for(int i = 0; i < 150; i++) {
-    digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW); digitalWrite(IN3, LOW); digitalWrite(IN4, LOW);
-    delay(5);
-    digitalWrite(IN1, LOW); digitalWrite(IN2, HIGH); digitalWrite(IN3, LOW); digitalWrite(IN4, LOW);
+  for(int i = 0; i < 330; i++) {
+    digitalWrite(IN1, LOW); digitalWrite(IN2, LOW); digitalWrite(IN3, LOW); digitalWrite(IN4, HIGH);
     delay(5);
     digitalWrite(IN1, LOW); digitalWrite(IN2, LOW); digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW);
     delay(5);
-    digitalWrite(IN1, LOW); digitalWrite(IN2, LOW); digitalWrite(IN3, LOW); digitalWrite(IN4, HIGH);
+    digitalWrite(IN1, LOW); digitalWrite(IN2, HIGH); digitalWrite(IN3, LOW); digitalWrite(IN4, LOW);
     delay(5);
+    digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW); digitalWrite(IN3, LOW); digitalWrite(IN4, LOW);
   };
 }
 
